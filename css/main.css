@@ -1,0 +1,48 @@
+body {
+    background-color: #222831;
+    font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+    font-weight: 300;
+    font-size: 18pt;
+    color: #dfdbdb;
+    line-height: 1.60em;
+    overflow-x: hidden;
+}
+
+div#chat-messages {
+    width: 100%;
+    height: 80vh;
+    margin-bottom: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+form#chat-form input,
+form#chat-form button {
+    border: 1px solid #dfdbdb;
+    background: none;
+    font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+    font-weight: 300;
+    font-size: 18pt;
+    color: white;
+    padding: 8px 15px;
+}
+
+form#chat-form input {
+    width: 40vw;
+}
+
+form#chat-form button {
+    cursor: pointer;
+}
+
+div.message.green {
+    color: #95d592;
+}
+
+div.message.red {
+    color: #d59292;
+}
+
+div.message.blue {
+    color: #9592d5;
+}
