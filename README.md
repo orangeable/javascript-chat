@@ -12,4 +12,4 @@ Note:  You can replace port 9600 with any available port on your system.
 
 ## Read our detailed article:
 
-[How to Create a Simple Chat Room with JavaScript]https://orangeable.com/javascript/chat
+[How to Create a Simple Chat Room with JavaScript](https://orangeable.com/javascript/chat)
