@@ -1,5 +1,5 @@
 // initialize websockets:
-var ws_uri = "ws://[your-domain]:9600";
+var ws_uri = "ws://127.0.0.1:9600";
 var websocket = new WebSocket(ws_uri);
 
 
@@ -26,10 +26,6 @@ websocket.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
     if (data.type == "message") {
-        if (data.message.utf8Data) {
-            data.message = JSON.parse(data.message.utf8Data).message;
-        }
-
         MessageAdd('<div class="message">' + data.username + ': ' + data.message + '</div>');
     }
 };
