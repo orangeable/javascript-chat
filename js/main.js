@@ -1,5 +1,5 @@
 // initialize websockets:
-var ws_uri = "ws://127.0.0.1:9600";
+var ws_uri = "wss://127.0.0.1:9600";
 var websocket = new WebSocket(ws_uri);
 
 
@@ -23,7 +23,7 @@ websocket.onerror = function(event) {
 
 // on websocket message received:
 websocket.onmessage = function(event) {
-    var data = JSON.parse(event.data);
+    let data = JSON.parse(event.data);
 
     if (data.type == "message") {
         MessageAdd('<div class="message">' + data.username + ': ' + data.message + '</div>');
@@ -35,18 +35,19 @@ websocket.onmessage = function(event) {
 document.getElementById("chat-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    var message_element = document.getElementsByTagName("input")[0];
-    var message = message_element.value;
+    let message_element = document.getElementsByTagName("input")[0];
+    let message = message_element.value;
 
     if (message.toString().length) {
-        var data = {
+        let username = localStorage.getItem("username");
+
+        let data = {
             type: "message",
-            username: "You",
+            username: username,
             message: message
         };
 
         websocket.send(JSON.stringify(data));
-
         message_element.value = "";
     }
 }, false);
@@ -54,8 +55,24 @@ document.getElementById("chat-form").addEventListener("submit", function(event) 
 
 // add message to chat:
 function MessageAdd(message) {
-    var chat_messages = document.getElementById("chat-messages");
+    let chat_messages = document.getElementById("chat-messages");
 
     chat_messages.insertAdjacentHTML("beforeend", message);
     chat_messages.scrollTop = chat_messages.scrollHeight;
 }
+
+
+// create your username:
+function Username() {
+	let username = window.prompt("Enter your username:", "");
+
+	if (username.toString().length > 2) {
+		localStorage.setItem("username", username);
+	}
+	else {
+		alert("Your username must be at least two characters.");
+		Username();
+	}
+}
+
+Username();
